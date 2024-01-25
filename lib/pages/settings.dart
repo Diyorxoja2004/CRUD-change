@@ -14,7 +14,7 @@ class settings extends StatefulWidget {
 
 class _settingsState extends State<settings> {
   final user = FirebaseAuth.instance.currentUser!;
-  final usercollection = FirebaseFirestore.instance.collection("users");
+  final usercollection = FirebaseFirestore.instance.collection("Users");
 
   Future<void> edit(String field) async {
     String Update = "";
@@ -31,8 +31,8 @@ class _settingsState extends State<settings> {
           decoration: InputDecoration(
               hintText: "Enter new $field",
               hintStyle: const TextStyle(color: Colors.grey)),
-          onChanged: (valuee) {
-            Update = valuee;
+          onChanged: (value) {
+            Update = value;
           },
         ),
         actions: [
@@ -50,10 +50,10 @@ class _settingsState extends State<settings> {
           ),
           TextButton(
               onPressed: () {
-                Navigator.of(context).pop(Update);
+              Navigator.of(context).pop(Update);
               },
               child: const Text(
-                "Update",
+                "Save",
                 style: TextStyle(color: Colors.white),
               )),
         ],
@@ -61,7 +61,7 @@ class _settingsState extends State<settings> {
       context: context,
     );
 
-    if (Update.trim().isNotEmpty) {
+    if (Update.trim().length>0) {
       await usercollection.doc(user.email).update({field: Update});
     }
   }
@@ -106,9 +106,9 @@ class _settingsState extends State<settings> {
                     ),
                   ),
                   Box(
-                    text: "Email",
-                    name: userdata["email"],
-                    onPressed: () => edit("info"),
+                    text: "username",
+                    name: userdata["username"],
+                    onPressed: () => edit("username"),
                   ),
                   const SizedBox(
                     height: 10,
@@ -116,7 +116,7 @@ class _settingsState extends State<settings> {
                   Box(
                     text: "Last Name",
                     name: userdata["last name"],
-                    onPressed: () => edit("info"),
+                    onPressed: () => edit("last name"),
                   ),
                   const SizedBox(
                     height: 10,
@@ -124,7 +124,7 @@ class _settingsState extends State<settings> {
                   Box(
                     text: "First Name",
                     name: userdata["first name"],
-                    onPressed: () => edit("info"),
+                    onPressed: () => edit("first name"),
                   ),
                   const SizedBox(
                     height: 10,
@@ -132,7 +132,7 @@ class _settingsState extends State<settings> {
                   Box(
                     text: "Age",
                     name: userdata["age"],
-                    onPressed: () => edit("info"),
+                    onPressed: () => edit("age"),
                   ),
                   const SizedBox(
                     height: 10,

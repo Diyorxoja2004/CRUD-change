@@ -65,6 +65,7 @@ class _auth_RegisterPageState extends State<auth_RegisterPage> {
       } else {
         ErrorMessage("Passwords do not match!");
       }
+      Navigator.pop(context);
       if(context.mounted)Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);
