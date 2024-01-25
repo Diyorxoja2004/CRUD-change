@@ -81,151 +81,76 @@ class _settingsState extends State<settings> {
               .collection("Users")
               .doc(user.email!)
               .snapshots(),
-          // builder: (context, snapshot) {
-          //   if (snapshot.hasData) {
-          //     final userdata = snapshot.data?.data() as Map<String, dynamic>;
-          //     return ListView(
-          //       shrinkWrap: true,
-          //       children: [
-          //         const SizedBox(
-          //           height: 100,
-          //         ),
-          //         Text(
-          //           user.email!,
-          //           textAlign: TextAlign.center,
-          //           style: const TextStyle(color: Colors.black, fontSize: 20),
-          //         ),
-          //         const SizedBox(
-          //           height: 100,
-          //         ),
-          //         const Padding(
-          //           padding: EdgeInsets.only(left: 25,),
-          //           child: Text(
-          //             "User info",
-          //             style: TextStyle(color: Colors.black, fontSize: 20),
-          //           ),
-          //         ),
-          //         Box(
-          //           text: "username",
-          //           name: userdata["username"],
-          //           onPressed: () => edit("username"),
-          //         ),
-          //         const SizedBox(
-          //           height: 10,
-          //         ),
-          //         Box(
-          //           text: "Last Name",
-          //           name: userdata["last name"],
-          //           onPressed: () => edit("last name"),
-          //         ),
-          //         const SizedBox(
-          //           height: 10,
-          //         ),
-          //         Box(
-          //           text: "First Name",
-          //           name: userdata["first name"],
-          //           onPressed: () => edit("first name"),
-          //         ),
-          //         const SizedBox(
-          //           height: 10,
-          //         ),
-          //         Box(
-          //           text: "Age",
-          //           name: userdata["age"],
-          //           onPressed: () => edit("age"),
-          //         ),
-          //         const SizedBox(
-          //           height: 10,
-          //         ),
-          //         const SizedBox(
-          //           height: 50,
-          //         ),
-          //         const Padding(
-          //           padding: EdgeInsets.only(left: 25),
-          //           child: Text(
-          //             "For User",
-          //             style: TextStyle(color: Colors.black),
-          //           ),
-          //         ),
-          //       ],
-          //     );
-          //   } else if (snapshot.hasError) {
-          //     return Center(
-          //       child: Text("Error${snapshot.error}"),
-          //     );
-          //   }
-          //   return const Center(
-          //     child: Text("Not working"),
-          //   );
-          // },
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               final userData = snapshot.data?.data();
               if (userData != null && userData is Map<String, dynamic>) {
                 return ListView(
-                shrinkWrap: true,
-                children: [
-                  const SizedBox(
-                    height: 100,
-                  ),
-                  Text(
-                    user.email!,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(color: Colors.black, fontSize: 20),
-                  ),
-                  const SizedBox(
-                    height: 100,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 25,),
-                    child: Text(
-                      "User info",
-                      style: TextStyle(color: Colors.black, fontSize: 20),
+                  shrinkWrap: true,
+                  children: [
+                    const SizedBox(
+                      height: 100,
                     ),
-                  ),
-                  Box(
-                    text: "username",
-                    name: userData["username"],
-                    onPressed: () => edit("username"),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Box(
-                    text: "Last Name",
-                    name: userData["last name"],
-                    onPressed: () => edit("last name"),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Box(
-                    text: "First Name",
-                    name: userData["first name"],
-                    onPressed: () => edit("first name"),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Box(
-                    text: "Age",
-                    name: userData["age"],
-                    onPressed: () => edit("age"),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 25),
-                    child: Text(
-                      "For User",
-                      style: TextStyle(color: Colors.black),
+                    Text(
+                      user.email!,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(color: Colors.black, fontSize: 20),
                     ),
-                  ),
-                ],
+                    const SizedBox(
+                      height: 100,
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(
+                        left: 25,
+                      ),
+                      child: Text(
+                        "User info",
+                        style: TextStyle(color: Colors.black, fontSize: 20),
+                      ),
+                    ),
+                    Box(
+                      text: "username",
+                      name: userData["username"],
+                      onPressed: () => edit("username"),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Box(
+                      text: "Last Name",
+                      name: userData["last name"],
+                      onPressed: () => edit("last name"),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Box(
+                      text: "First Name",
+                      name: userData["first name"],
+                      onPressed: () => edit("first name"),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Box(
+                      text: "Age",
+                      name: userData["age"],
+                      onPressed: () => edit("age"),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const SizedBox(
+                      height: 50,
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 25),
+                      child: Text(
+                        "For User",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                  ],
                 );
               } else {
                 return const Center(
@@ -238,7 +163,7 @@ class _settingsState extends State<settings> {
               );
             } else {
               return const Center(
-                child: CircularProgressIndicator(), // or any loading indicator
+                child: CircularProgressIndicator(), 
               );
             }
           },
