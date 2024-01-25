@@ -40,6 +40,8 @@ class _auth_RegisterPageState extends State<auth_RegisterPage> {
         );
       },
     );
+    
+
     // if (passwordcontroller()){
     //   await FirebaseAuth.instance.createUserWithEmailAndPassword(
     //     email: _emailcontroller.text.trim(),
@@ -66,13 +68,11 @@ class _auth_RegisterPageState extends State<auth_RegisterPage> {
         ErrorMessage("Passwords do not match!");
       }
       Navigator.pop(context);
-      if(context.mounted)Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
-      Navigator.pop(context);
+       Navigator.pop(context);
       ErrorMessage(e.code);
-      Navigator.pop(context);
+    
     }
-     Navigator.pop(context);
   }
 
   void ErrorMessage(String message) {
@@ -146,6 +146,7 @@ class _auth_RegisterPageState extends State<auth_RegisterPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25),
                 child: TextField(
+                  maxLength: 2,
                   controller: _ageController,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
@@ -189,10 +190,12 @@ class _auth_RegisterPageState extends State<auth_RegisterPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25),
                 child: TextField(
+                  maxLength: 8,
                   keyboardType: TextInputType.name,
                   controller: _passwordcontroller,
                   obscureText: true,
                   decoration: InputDecoration(
+                    
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(color: Colors.black),
                       borderRadius: BorderRadius.circular(12),
@@ -211,6 +214,7 @@ class _auth_RegisterPageState extends State<auth_RegisterPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25),
                 child: TextField(
+                  maxLength: 8,
                   controller: _confirmpassController,
                   obscureText: true,
                   decoration: InputDecoration(
